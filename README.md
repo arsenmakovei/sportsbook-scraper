@@ -31,4 +31,20 @@ Running the Scraper
 - Use flag `-s LOG_LEVEL=INFO` to see logs in terminal for some log level. 
 Also, you can use other log levels such as DEBUG, INFO, WARNING, ERROR, CRITICAL.
 - Use flag `--logfile football.log` to save logs in file, or use other file name.
-- Also you can see test scrapped data and logs in files football.csv and football.log
+- Also, you can see test scrapped data and logs in files football.csv and football.log
+
+Running the Scraper in Docker
+
+- Uncomment the code below in the file `sportsbook/spiders/football.py`
+
+    ```shell
+    self.driver = webdriver.Remote(
+       command_executor="http://chromedriver:4444/wd/hub", options=chrome_options
+    ) 
+    ```
+
+- Execute the following command:
+
+    ```shell
+    docker-compose up --build
+    ```

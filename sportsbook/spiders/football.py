@@ -19,7 +19,12 @@ class FootballSpider(scrapy.Spider):
         super(FootballSpider, self).__init__(*args, **kwargs)
         chrome_options = Options()
         # chrome_options.add_argument("--headless")  # not load all page data in headless mode
-        self.driver = webdriver.Chrome(options=chrome_options)
+        self.driver = webdriver.Chrome(
+            options=chrome_options
+        )  # To parse data using scrapy
+        # self.driver = webdriver.Remote(
+        #     command_executor="http://chromedriver:4444/wd/hub", options=chrome_options
+        # )  # To parse data using docker-compose
 
     def close(self, reason):
         self.driver.close()

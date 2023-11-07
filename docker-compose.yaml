@@ -1,0 +1,17 @@
+version: "3"
+services:
+  scrapy:
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    depends_on:
+      - chromedriver
+    restart: on-failure
+
+  chromedriver:
+    image: selenium/standalone-chrome
+    ports:
+      - "4444:4444"
+    privileged: true
+    shm_size: 2g
